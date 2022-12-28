@@ -19,6 +19,13 @@ public class ArrayInterval implements Interval{
     }
 
     public Interval intersect(Interval r) {
-        return new ArrayInterval(new int[]{max(boundary[0], r.getSmallestElem()), min(boundary[1], r.getLargestElem())});
+        if(boundary[0] < r.getSmallestElem() && boundary[1] < r.getLargestElem())
+        {
+            return new ArrayInterval(new int[]{max(boundary[0], r.getSmallestElem()), min(boundary[1], r.getLargestElem())});
+        }
+       else
+       {
+        return  new ArrayInterval(new int[]{0,0})   ;
+       }
     }  // works for any interval type ↑
 }
